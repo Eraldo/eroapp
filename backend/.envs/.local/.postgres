@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=eroapp
+POSTGRES_USER=tAwHbgmVFRnoOBLEbEHRADSCCaLUwrve
+POSTGRES_PASSWORD=wkYFyGG7VXjAtl6D8mpt9EN6JnnNTHLsaTHo1Wg3JUwMEyxd6Jkn2bSXaej95zab

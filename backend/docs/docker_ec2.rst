@@ -14,13 +14,13 @@ Docker encourages running one container for each process. This might mean one co
 
 .. _Redis: http://redis.io/
 
-The Docker compose tool (previously known as `fig`_) makes linking these containers easy. An example set up for your Cookiecutter Django project might look like this:
+The Docker compose tool (previously known as `fig`_) makes linking these containers easy. An example set up for your Django project might look like this:
 
 .. _fig: http://www.fig.sh/
 
 ::
 
-    webapp/ # Your cookiecutter project would be in here
+    webapp/ # Your project would be in here
         Dockerfile
         ...
     database/
@@ -72,7 +72,7 @@ The `Docker compose documentation`_ explains in detail what you can accomplish i
         links:
             - webapp
 
-We'll ignore the webserver for now (you'll want to comment that part out while we do). A working Dockerfile to run your cookiecutter application might look like this:
+We'll ignore the webserver for now (you'll want to comment that part out while we do). A working Dockerfile to run your application might look like this:
 
 ::
 
@@ -107,7 +107,7 @@ We'll ignore the webserver for now (you'll want to comment that part out while w
     # uncomment the line below to use container as a non-root user
     USER python:python
 
-Running `sudo docker-compose -f production.yml build` will follow the instructions in your `production.yml` file and build the database container, then your webapp, before mounting your cookiecutter project files as a volume in the webapp container and linking to the database. Our example yaml file runs in development mode but changing it to production mode is as simple as commenting out the line using `runserver` and uncommenting the line using `gunicorn`.
+Running `sudo docker-compose -f production.yml build` will follow the instructions in your `production.yml` file and build the database container, then your webapp, before mounting your project files as a volume in the webapp container and linking to the database. Our example yaml file runs in development mode but changing it to production mode is as simple as commenting out the line using `runserver` and uncommenting the line using `gunicorn`.
 
 Both are set to run on port `0.0.0.0:8000`, which is where the Docker daemon will discover it. You can now run `sudo docker-compose -f production.yml up` and browse to `localhost:8000` to see your application running.
 
@@ -134,8 +134,8 @@ You'll need a webserver container for deployment. An example setup for `Nginx`_ 
     EXPOSE 80 443
 
     # load nginx conf
-    ADD ./site.conf /etc/nginx/sites-available/your_cookiecutter_project
-    RUN ["ln", "-s", "/etc/nginx/sites-available/your_cookiecutter_project", "/etc/nginx/sites-enabled/your_cookiecutter_project"]
+    ADD ./site.conf /etc/nginx/sites-available/your_project
+    RUN ["ln", "-s", "/etc/nginx/sites-available/your_project", "/etc/nginx/sites-enabled/your_cookiecutter_project"]
     RUN ["rm", "-rf", "/etc/nginx/sites-available/default"]
 
     #start the server

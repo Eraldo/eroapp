@@ -62,6 +62,7 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
+    'django_filters',
     'crispy_forms',
     'allauth',
     'allauth.account',
@@ -258,3 +259,11 @@ SOCIALACCOUNT_ADAPTER = 'eroapp.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+INSTALLED_APPS += ['graphene_django']
+GRAPHENE = {
+    'MIDDLEWARE': [
+        'graphene_django.debug.DjangoDebugMiddleware',
+        # 'colegend.api.middelware.AuthorizationMiddleware',
+    ],
+    'SCHEMA': 'eroapp.api.schema.schema' # Where your Graphene schema lives
+}
